@@ -1,0 +1,105 @@
+{% if m %}
+
+<script>
+  alert("{{m}}");
+</script>
+
+{% endif %}
+
+<style>
+  body {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/cpanel-10ae6.appspot.com/o/bg-01.jpg?alt=media&token=c6d82939-bb59-4ff4-903c-09b0af8c7b28);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .signup-box {
+    width: 360px;
+    height: 540px;
+    margin-top: 2.5%;
+    margin-left: 38%;
+    background-color: white;
+    border-radius: 8px;
+    padding-top: 1.7%;
+  }
+
+  h1 {
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  form {
+    width: 300px;
+    margin-left: 20px;
+  }
+
+  form label {
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  form input {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+  }
+
+  input[type="submit"] {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+  }
+
+  button {
+    width: 320px;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+  }
+
+  button:hover {
+    background-color: rgb(236, 159, 211);
+  }
+  #sub:hover {
+    background-color: rgb(236, 136, 203);
+  }
+  #sub,
+  button {
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <div class="signup-box">
+    <h1>Sign Up</h1>
+
+    <form action="postsignup" method="post">
+      {% csrf_token %} Name:
+      <input type="text" name="name" /><br /><br />
+
+      Email :
+      <input type="email" name="email" /><br /><br />
+      Password :
+      <input type="password" name="password" /><br /><br />
+
+      <input type="submit" id="sub" value="Sign Up" />
+
+      <button type="button" onclick="document.location='cancelsignup'">
+        Sign In
+      </button>
+    </form>
+  </div>
+</body>

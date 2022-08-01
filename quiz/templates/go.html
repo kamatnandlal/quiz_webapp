@@ -1,0 +1,173 @@
+<style>
+  body {
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/cpanel-10ae6.appspot.com/o/bg-01.jpg?alt=media&token=c6d82939-bb59-4ff4-903c-09b0af8c7b28);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-family: "Roboto", sans-serif;
+  }
+  .form-center {
+    display: flex;
+    justify-content: center;
+  }
+  fieldset {
+    background-color: #ccc;
+    width: 500px;
+    height: 260px;
+    border: 6px solid #888;
+    border-right: 6px solid #666;
+    border-left: 6px solid #666;
+  }
+  h1 {
+    text-align: center;
+    padding-top: 15px;
+  }
+  #bu2 {
+    margin-left: 80%;
+    width: 150px;
+    height: 35px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+  }
+  #bu1 {
+    margin-left: 43%;
+    width: 200px;
+    height: 35px;
+    border: none;
+    background-color: #49c1a2;
+    color: white;
+    font-size: 18px;
+    border-radius: 3px;
+  }
+
+  #qw,
+  button {
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+  }
+  label {
+    font-family: "Roboto", sans-serif;
+    font-size: medium;
+  }
+  p {
+    font-family: "Roboto", sans-serif;
+    font-size: larger;
+  }
+  input {
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+  }
+  #qw {
+    margin-left: 85%;
+  }
+</style>
+
+{% if res %}
+<h1>Here in {{ms}} quiz</h1>
+<br />
+<br />
+<br />
+
+<h1>{{res}}</h1>
+<br />
+<br />
+
+<h1>Your Final Marks is {{score}}</h1>
+
+<button type="button" id="bu1" onclick="document.location='logout'">
+  Log out
+</button>
+
+{% endif %} {% if ques %}
+<h1>START YOUR {{m}} QUIZ</h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="form-center">
+  <form action="go" method="GET">
+    <fieldset>
+      {% csrf_token %}
+      <input type="hidden" name="csp1" id="csp1" value="{{m}}" />
+      <input type="hidden" name="ans1" id="ans1" value="{{ans}}" />
+      <input type="hidden" name="type" id="type" value="radio" />
+      <input type="hidden" name="sc" id="sc" value="{{sc}}" />
+      <h3>Question No: {{me}}</h3>
+      <p>{{ques}}</p>
+      <input type="radio" id="ag1" name="ag" value="{{option1}}" />
+      <label for="ag1">{{option1}}</label><br />
+      <input type="radio" id="ag2" name="ag" value="{{option2}}" />
+      <label for="ag2">{{option2}}</label><br />
+      <input type="radio" id="ag3" name="ag" value="{{option3}}" />
+      <label for="ag3">{{option3}}</label><br />
+      <input type="radio" id="ag4" name="ag" value="{{option4}}" />
+      <label for="ag4">{{option4}}</label><br /><br />
+      {% if pos1 %}
+
+      <input type="submit" id="qw" value="Finish" />
+
+      {% endif %}{% if pos2 %}
+
+      <input type="submit" id="qw" value="Next" />
+
+      {% endif %} {% if pos %}
+
+      <button type="button" onclick="history.back()">Previous</button>
+
+      {% endif %}
+      <input type="hidden" name="inc" id="inc" value="{{me}}" />
+    </fieldset>
+  </form>
+</div>
+{% endif %} {% if quest %}
+<h1>START YOUR {{m}} QUIZ</h1>
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="form-center">
+  <form action="go" method="GET">
+    <fieldset>
+      {% csrf_token %}
+      <input type="hidden" name="csp1" id="csp1" value="{{m}}" />
+      <input type="hidden" name="ans1" id="ans1" value="{{ans}}" />
+      <input type="hidden" name="ans2" id="ans2" value="{{ans2}}" />
+      <input type="hidden" name="type" id="type" value="check" />
+      <input type="hidden" name="sc" id="sc" value="{{sc}}" />
+      <h3>Question No: {{me}}</h3>
+      <p>{{quest}}</p>
+      <input type="checkbox" id="ag1" name="ag1" value="{{option1}}" />
+      <label for="ag1">{{option1}}</label><br />
+      <input type="checkbox" id="ag2" name="ag2" value="{{option2}}" />
+      <label for="ag2">{{option2}}</label><br />
+      <input type="checkbox" id="ag3" name="ag3" value="{{option3}}" />
+      <label for="ag3">{{option3}}</label><br />
+      <input type="checkbox" id="ag5" name="ag5" value="{{option5}}" />
+      <label for="ag5">{{option5}}</label><br />
+      <input type="checkbox" id="ag4" name="ag4" value="{{option4}}" />
+      <label for="ag4">{{option4}}</label><br />
+
+      {% if pos1 %}
+
+      <input type="submit" id="qw" value="Finish" />
+
+      {% endif %}{% if pos2 %}
+
+      <input type="submit" id="qw" value="Next" />
+
+      {% endif %} {% if pos %}
+
+      <button type="button" onclick="history.back()">Previous</button>
+
+      {% endif %}
+      <input type="hidden" name="inc" id="inc" value="{{me}}" />
+    </fieldset>
+  </form>
+</div>
+{% endif %}
